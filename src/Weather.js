@@ -1,5 +1,5 @@
 import React from "react";
-import "./weather.css";
+
 export default function Weather() {
   let weatherData = {
     city: "Kyiv",
@@ -60,7 +60,7 @@ export default function Weather() {
           </div>
         </div>
       </div>
-      <p className="text-center mt-5">
+      <p className="mt-5">
         ✌️ This website was coded by Nataliia Mykhalevych, and is
         <a href="https://github.com/Nata010424/React-weather-app">
           {" "}
