@@ -60,6 +60,13 @@ export default function Weather() {
           </div>
         </div>
       </div>
+      <p className="text-center mt-5">
+        ✌️ This website was coded by Nataliia Mykhalevych, and is
+        <a href="https://github.com/Nata010424/React-weather-app">
+          {" "}
+          open-sourced
+        </a>
+      </p>
     </div>
   );
 }
