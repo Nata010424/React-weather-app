@@ -14,7 +14,7 @@ export default function Weather(props) {
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
-      icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
+      iconUrl: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       wind: response.data.wind.speed,
       city: response.data.name,
     });
@@ -39,7 +39,7 @@ export default function Weather(props) {
     return (
       <div className="Weather">
         <div className="search-city">
-          <div className="col-8 pe-3">
+          <div className="col-10 pe-3">
             <form onSubmit={handleSubmit}>
               <input
                 type="text"
@@ -53,7 +53,6 @@ export default function Weather(props) {
           <button className="btn" type="submit" value="Saerch">
             <i className="fa-solid fa-magnifying-glass second-icon"></i>
           </button>
-          <button className="newbutton">Current</button>
         </div>
         <WeatherInfo data={weatherData} />
       </div>

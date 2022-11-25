@@ -4,7 +4,7 @@ export default function WeatherInfo(props) {
   return (
     <div className="WeatherInfo">
       <div className="row mt-5">
-        <div className="col-3">
+        <div className="col-4">
           <div className="first-block">
             <h1>{props.data.city}</h1>
             <h2>
@@ -13,13 +13,13 @@ export default function WeatherInfo(props) {
             </h2>
           </div>
         </div>
-        <div className="col-3">
+        <div className="col-4">
           <div className="main-icon">
-            <img alt="Sunny" src={props.data.imgUrl} />
+            <img alt="" src={props.data.iconUrl} />
           </div>
         </div>
 
-        <div className="col-3">
+        <div className="col-4">
           <div className="grade">
             <span className="temp">{Math.round(props.data.temperature)}</span>
             <span className="units">
@@ -33,7 +33,7 @@ export default function WeatherInfo(props) {
             <br />
             <span>humidity: {props.data.humidity}%</span>
             <br />
-            <span>wind:{Math.round(props.data.wind)}km/hour</span>
+            <span>wind: {Math.round(props.data.wind)} km/hour</span>
           </div>
         </div>
       </div>
