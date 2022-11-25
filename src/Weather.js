@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import WeatherInfo from "./WeatherInfo";
 import "./weather.css";
 import axios from "axios";
+
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
   const [city, setCity] = useState(props.defaultCity);
@@ -10,7 +12,7 @@ export default function Weather(props) {
       ready: true,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
-      date: "Friday",
+      date: new Date(response.data.dt * 1000),
       description: response.data.weather[0].description,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
       wind: response.data.wind.speed,
@@ -29,7 +31,7 @@ export default function Weather(props) {
 
   function search() {
     const apiKey = "ee87edddc26422e4cc399ddeca53c7c1";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${props.defaultCity}&appid=${apiKey}&units=metric`;
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(handleResponse);
   }
 
@@ -48,45 +50,12 @@ export default function Weather(props) {
               />
             </form>
           </div>
-          <button className="btn" type="submit">
+          <button className="btn" type="submit" value="Saerch">
             <i className="fa-solid fa-magnifying-glass second-icon"></i>
           </button>
           <button className="newbutton">Current</button>
         </div>
-        <div className="row mt-5">
-          <div className="col-3">
-            <div className="first-block">
-              <h1>{weatherData.city}</h1>
-              <h2>{weatherData.day}</h2>
-              <h3>{weatherData.time}</h3>
-            </div>
-          </div>
-          <div className="col-3">
-            <div className="main-icon">
-              <img alt="Sunny" src={weatherData.imgUrl} />
-            </div>
-          </div>
-
-          <div className="col-3">
-            <div className="grade">
-              <span className="temp">
-                {Math.round(weatherData.temperature)}
-              </span>
-              <span className="units">
-                <a href="/" className="active">
-                  °C
-                </a>{" "}
-                |<a href="/">°F</a>
-              </span>
-              <br />
-              <span>{weatherData.description}</span>
-              <br />
-              <span>humidity: {weatherData.humidity}%</span>
-              <br />
-              <span>wind:{Math.round(weatherData.wind)}km/hour</span>
-            </div>
-          </div>
-        </div>
+        <WeatherInfo data={weatherData} />
       </div>
     );
   } else {
