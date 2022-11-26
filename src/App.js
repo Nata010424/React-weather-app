@@ -9,7 +9,11 @@ function App() {
           <Weather defaultCity="Kyiv" />
           <p className="mt-2">
             ✌️ This website was coded by Nataliia Mykhalevych, and is
-            <a href="https://github.com/Nata010424/React-weather-app">
+            <a
+              href="https://github.com/Nata010424/React-weather-app"
+              target="_blank"
+              rel="noreferrer"
+            >
               {" "}
               open-sourced
             </a>
