@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import "./weather.css";
 import axios from "axios";
 
@@ -10,6 +11,7 @@ export default function Weather(props) {
   function handleResponse(response) {
     setWeatherData({
       ready: true,
+      coordinates: response.data.coord,
       temperature: response.data.main.temp,
       humidity: response.data.main.humidity,
       date: new Date(response.data.dt * 1000),
@@ -49,12 +51,18 @@ export default function Weather(props) {
                 onChange={handleCityChange}
               />
             </div>
-            <button className="btn" type="submit" value="search">
+            <button
+              title="Seach forecast for city"
+              className="btn"
+              type="submit"
+              value="search"
+            >
               <i className="fa-solid fa-magnifying-glass second-icon"></i>
             </button>
           </div>
         </form>
         <WeatherInfo data={weatherData} />
+        <WeatherForecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
